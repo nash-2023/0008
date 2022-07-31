@@ -100,7 +100,28 @@ class _MyHomePageState extends State<MyHomePage> {
                 hintText: "Type Your Food",
                 enabled: true,
                 border: InputBorder.none,
+                icon: Icon(Icons.g_mobiledata),
               ),
+            ),
+            TextFormField(
+              cursorColor: Colors.red,
+              cursorHeight: 40.0,
+              cursorWidth: 3.0,
+              // initialValue: "funney",
+              keyboardType: TextInputType.phone,
+              maxLength: 20,
+              maxLines: 1,
+              decoration: InputDecoration(
+                  // hintText: "Type Your 006",
+                  ),
+            ),
+            TextFormField(
+              decoration: InputDecoration(
+                hintText: "Type Your Password",
+              ),
+              // obscureText: true,
+              initialValue: "read only field",
+              readOnly: true,
             ),
           ],
         ));
