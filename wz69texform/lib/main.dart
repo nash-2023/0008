@@ -29,6 +29,9 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController userName = new TextEditingController();
   TextEditingController userMail = new TextEditingController();
+  String _name = "";
+
+  GlobalKey<FormState> filedKey = new GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,7 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
               controller: userName,
               decoration: InputDecoration(
                 hintText: "Type Your Name",
-                // hintMaxLines: 1,sdf
+                // hintMaxLines: 1,
                 // hintStyle: TextStyle(
                 //   color: Colors.red,
                 // ),
@@ -68,8 +71,37 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             TextFormField(
               controller: userMail,
-              decoration: formDecoration,
+              decoration: InputDecoration(
+                hintText: "Mail",
+                // icon: Icon(Icons.map),
+                // prefixIcon: Icon(Icons.location_on),
+              ),
+              // cursorColor: Colors.red,
+              // initialValue: "mail",  // Throw Error
+              // keyboardType: TextInputType.number,
+              // keyboardType: TextInputType.emailAddress,
+              // keyboardType: TextInputType.datetime,
+              // keyboardType: TextInputType.name,
+              // maxLength: 15,
+              // obscureText: true, // with passwards
+              // initialValue: "Abdalla Attia",
+              // readOnly: true,
+              style: TextStyle(color: Colors.blue),
+              textInputAction: TextInputAction.search,
+
+              onTap: () {
+                print("tab");
+              },
+              onChanged: (txt) {
+                setState(() {
+                  _name = txt;
+                });
+              },
+              onEditingComplete: () {
+                print("complete");
+              },
             ),
+            Text("your mail is : $_name"),
             ElevatedButton(
               onPressed: () {
                 print(userName.text);
@@ -139,6 +171,7 @@ class _MyHomePageState extends State<MyHomePage> {
             //   initialValue: "read only field",
             //   readOnly: true,
             // ),
+//******************************** ep 74-Validator */
           ],
         ));
   }
