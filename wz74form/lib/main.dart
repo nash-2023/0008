@@ -40,6 +40,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Form(
         key: _formState,
+        autovalidateMode: AutovalidateMode.always,
         child: Column(
           children: [
             TextFormField(
@@ -55,11 +56,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () {
                 var x = _formState.currentState;
-                if (x!.validate()) {
-                  print("valid");
-                } else {
-                  print("IN VALID !!!");
-                }
+                x!.validate();
+                // if (x!.validate()) {
+                //   print("valid");
+                // } else {
+                //   print("IN VALID !!!");
+                // }
                 // print(x);
               },
               child: Text("validator"),
