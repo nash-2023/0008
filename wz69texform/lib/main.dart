@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:wz69texform/style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  TextEditingController userName = new TextEditingController();
+  TextEditingController userMail = new TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,6 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
         body: Column(
           children: [
             TextFormField(
+              controller: userName,
               decoration: InputDecoration(
                 hintText: "Type Your Name",
                 // hintMaxLines: 1,sdf
@@ -63,66 +67,78 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             TextFormField(
-              decoration: InputDecoration(
-                hintText: "Type Your email",
-                enabled: false,
-                disabledBorder: UnderlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: Colors.red,
-                    width: 2.0,
-                  ),
-                ),
-              ),
+              controller: userMail,
+              decoration: formDecoration,
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "Type Your age",
-                enabled: true,
-                focusedBorder: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10.0),
-                  borderSide: BorderSide(
-                    color: Colors.red,
-                    width: 2.0,
-                  ),
-                ),
-              ),
+            ElevatedButton(
+              onPressed: () {
+                print(userName.text);
+                print(userMail.text);
+              },
+              child: Text("Submit"),
             ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "Type Your Gender",
-                enabled: true,
-                border: InputBorder.none,
-              ),
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "Type Your Food",
-                enabled: true,
-                border: InputBorder.none,
-                icon: Icon(Icons.g_mobiledata),
-              ),
-            ),
-            TextFormField(
-              cursorColor: Colors.red,
-              cursorHeight: 40.0,
-              cursorWidth: 3.0,
-              // initialValue: "funney",
-              keyboardType: TextInputType.phone,
-              maxLength: 20,
-              maxLines: 1,
-              decoration: InputDecoration(
-                  // hintText: "Type Your 006",
-                  ),
-            ),
-            TextFormField(
-              decoration: InputDecoration(
-                hintText: "Type Your Password",
-              ),
-              // obscureText: true,
-              initialValue: "read only field",
-              readOnly: true,
-            ),
+            // TextFormField(
+            //   controller: userInfo,
+            //   decoration: InputDecoration(
+            //     hintText: "Type Your email",
+            //     enabled: true,
+            //     enabledBorder: UnderlineInputBorder(
+            //       borderRadius: BorderRadius.circular(10.0),
+            //       borderSide: BorderSide(
+            //         color: Colors.red,
+            //         width: 5.0,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // TextFormField(
+            //   decoration: InputDecoration(
+            //     hintText: "Type Your age",
+            //     enabled: true,
+            //     focusedBorder: OutlineInputBorder(
+            //       borderRadius: BorderRadius.circular(10.0),
+            //       borderSide: BorderSide(
+            //         color: Colors.red,
+            //         width: 2.0,
+            //       ),
+            //     ),
+            //   ),
+            // ),
+            // TextFormField(
+            //   decoration: InputDecoration(
+            //     hintText: "Type Your Gender",
+            //     enabled: true,
+            //     border: InputBorder.none,
+            //   ),
+            // ),
+            // TextFormField(
+            //   decoration: InputDecoration(
+            //     hintText: "Type Your Food",
+            //     enabled: true,
+            //     border: InputBorder.none,
+            //     icon: Icon(Icons.g_mobiledata),
+            //   ),
+            // ),
+            // TextFormField(
+            //   cursorColor: Colors.red,
+            //   cursorHeight: 40.0,
+            //   cursorWidth: 3.0,
+            //   // initialValue: "funney",
+            //   keyboardType: TextInputType.phone,
+            //   maxLength: 20,
+            //   maxLines: 1,
+            //   decoration: InputDecoration(
+            //       // hintText: "Type Your 006",
+            //       ),
+            // ),
+            // TextFormField(
+            //   decoration: InputDecoration(
+            //     hintText: "Type Your Password",
+            //   ),
+            //   // obscureText: true,
+            //   initialValue: "read only field",
+            //   readOnly: true,
+            // ),
           ],
         ));
   }
