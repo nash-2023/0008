@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -31,6 +33,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   GlobalKey<FormState> _formState = new GlobalKey<FormState>();
+  String? _name;
+  String? _mail;
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +48,9 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: [
             TextFormField(
+              onSaved: (txt) {
+                _name = txt;
+              },
               validator: (txt) {
                 if (txt!.length == 0) {
                   return ("Empty");
@@ -52,17 +59,39 @@ class _MyHomePageState extends State<MyHomePage> {
                   return ("file is too small");
                 }
               },
+              decoration: InputDecoration(
+                hintText: "name",
+              ),
+            ),
+            TextFormField(
+              onSaved: (txt) {
+                _mail = txt;
+              },
+              validator: (txt) {
+                if (txt!.length == 0) {
+                  return ("Empty");
+                }
+                if (txt.length < 5) {
+                  return ("file is too small");
+                }
+              },
+              decoration: InputDecoration(
+                hintText: "mail",
+              ),
             ),
             ElevatedButton(
               onPressed: () {
                 var x = _formState.currentState;
-                x!.validate();
-                // if (x!.validate()) {
-                //   print("valid");
-                // } else {
-                //   print("IN VALID !!!");
-                // }
+                // x!.validate();
+                if (x!.validate()) {
+                  x.save();
+                  print("valid");
+                } else {
+                  print("IN VALID !!!");
+                }
                 // print(x);
+                print("User Name: $_name");
+                print("Email :$_mail");
               },
               child: Text("validator"),
             ),
