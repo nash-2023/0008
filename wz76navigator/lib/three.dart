@@ -9,7 +9,14 @@ class Three extends StatelessWidget {
       appBar: AppBar(
         title: Text("Three"),
       ),
-      body: Center(child: Text("page Three")),
+      body: Center(
+        child: ElevatedButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+          child: Text("Back"),
+        ),
+      ),
     );
   }
 }

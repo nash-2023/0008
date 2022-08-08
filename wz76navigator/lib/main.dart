@@ -49,6 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             //*************  first option */
             // ElevatedButton(
@@ -72,6 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
             ElevatedButton(
               onPressed: () => Navigator.of(context).pushNamed('three'),
               child: Text("go to Page #3"),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                if (Navigator.of(context).canPop()) Navigator.of(context).pop();
+              },
+              child: Text("Back"),
             ),
           ],
         ),
