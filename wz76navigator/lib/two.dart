@@ -15,16 +15,13 @@ class Two extends StatelessWidget {
           children: [
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return Three();
-                }));
+                Navigator.of(context).pushNamed('three');
               },
               child: Text("go to Page #3"),
             ),
             ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pop();
+                if (Navigator.of(context).canPop()) Navigator.of(context).pop();
               },
               child: Text("Back"),
             ),

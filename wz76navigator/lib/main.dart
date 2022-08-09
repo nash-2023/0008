@@ -14,27 +14,26 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: '76 Navigator',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const MyHomePage(),
       //**************************** Second Option */
       routes: {
         'one': (context) => One(),
-        'two': (context) {
-          return Two();
-        },
+        'two': (context) => Two(),
         'three': (context) => Three(),
+        'home': (context) => MyHomePage(),
       },
+      //****************************************** */
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
+  const MyHomePage({Key? key}) : super(key: key);
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -45,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text("widget.title"),
       ),
       body: Center(
         child: Column(
@@ -63,7 +62,10 @@ class _MyHomePageState extends State<MyHomePage> {
             // ),
             //**************************** Second Option */
             ElevatedButton(
-              onPressed: () => Navigator.of(context).pushNamed('one'),
+              // onPressed: () => Navigator.of(context).pushNamed('one'),
+              //***************************** ep 78-pushReplacementNamed('')*/
+              onPressed: () =>
+                  Navigator.of(context).pushReplacementNamed('one'),
               child: Text("go to Page #1"),
             ),
             ElevatedButton(
@@ -76,7 +78,18 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             ElevatedButton(
               onPressed: () {
-                if (Navigator.of(context).canPop()) Navigator.of(context).pop();
+                //***********************************ep 77-pop(), canPop() */
+                if (Navigator.of(context).canPop())
+                  Navigator.of(context).pop();
+                else {
+                  showDialog(
+                      context: context,
+                      builder: (BuildContext) {
+                        return AlertDialog(
+                          title: Text("no Back ya 5ra!"),
+                        );
+                      });
+                }
               },
               child: Text("Back"),
             ),

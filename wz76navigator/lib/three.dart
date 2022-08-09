@@ -12,7 +12,7 @@ class Three extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           onPressed: () {
-            Navigator.of(context).pop();
+            if (Navigator.of(context).canPop()) Navigator.of(context).pop();
           },
           child: Text("Back"),
         ),
