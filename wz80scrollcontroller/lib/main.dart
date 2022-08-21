@@ -36,7 +36,7 @@ class _MyHomePageState extends State<MyHomePage> {
     _scrollController.addListener(() {
       print(_scrollController.offset);
       print(_scrollController.position.maxScrollExtent);
-      print(_scrollController.position.minScrollExtent);
+      print("----------------------------------------");
     });
     super.initState();
   }
@@ -47,48 +47,52 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: ListView(
-        controller: _scrollController,
-        children: [
-          ElevatedButton(
-            onPressed: () {
-              _scrollController.animateTo(
-                _scrollController.position.maxScrollExtent,
-                duration: Duration(seconds: 1),
-                curve: Curves.bounceIn,
-              );
-            },
-            child: Text('End Of List'),
-          ),
-          ...List.generate(
-              100,
-              (index) => Column(
-                    children: [
-                      Container(
-                        width: double.infinity,
-                        height: 100.0,
-                        margin: EdgeInsets.symmetric(horizontal: 10.0),
-                        color: Color.fromARGB(
-                            255, index * 10, index * 20, index * 30),
-                      ),
-                      // Divider(
-                      //   color: Colors.black,
-                      //   indent: 10.0,
-                      //   endIndent: 10.0,
-                      // ),
-                    ],
-                  )),
-          ElevatedButton(
-            onPressed: () {
-              _scrollController.animateTo(
-                0.0,
-                duration: Duration(seconds: 1),
-                curve: Curves.easeIn,
-              );
-            },
-            child: Text('Start of List'),
-          ),
-        ],
+      body: Container(
+        width: 400.0,
+        height: 700.0,
+        child: ListView(
+          controller: _scrollController,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                _scrollController.animateTo(
+                  _scrollController.position.maxScrollExtent,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.bounceIn,
+                );
+              },
+              child: Text('End Of List'),
+            ),
+            ...List.generate(
+                100,
+                (index) => Column(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          height: 100.0,
+                          margin: EdgeInsets.symmetric(horizontal: 10.0),
+                          color: Color.fromARGB(
+                              255, index * 10, index * 20, index * 30),
+                        ),
+                        // Divider(
+                        //   color: Colors.black,
+                        //   indent: 10.0,
+                        //   endIndent: 10.0,
+                        // ),
+                      ],
+                    )),
+            ElevatedButton(
+              onPressed: () {
+                _scrollController.animateTo(
+                  0.0,
+                  duration: Duration(seconds: 1),
+                  curve: Curves.easeIn,
+                );
+              },
+              child: Text('Start of List'),
+            ),
+          ],
+        ),
       ),
     );
   }
