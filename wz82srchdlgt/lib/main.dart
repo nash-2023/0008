@@ -64,7 +64,7 @@ class DataSearch extends SearchDelegate {
     "Doaa",
     "Hegazy",
     "Mohammed",
-    "Samy",
+    "Sady",
     "Sayed",
   ];
 
@@ -92,24 +92,31 @@ class DataSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text("data");
+    return Text(query);
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     List fltr = names.where((e) {
-      return e[0] == query;
+      return e.startsWith(query);
+      // return e.contains(query);
       // return true;
     }).toList();
     return ListView(
       children: List.generate(
-        query == "" ? names.length : fltr.length,
+        fltr.length,
         // query == "" ? names[i] : fltr[i],
         (i) {
-          return Container(
-            height: 75.0,
-            color: Color.fromARGB(255, 248, 184, 180),
-            child: Text(query == "" ? names[i] : fltr[i]),
+          return InkWell(
+            onTap: () {
+              query = fltr[i];
+              showResults(context);
+            },
+            child: Container(
+              height: 50.0,
+              color: Color.fromARGB(255, 248, 184, 180),
+              child: Text(fltr[i]),
+            ),
           );
         },
       ),
