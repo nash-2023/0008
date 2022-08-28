@@ -73,9 +73,9 @@ class DataSearch extends SearchDelegate {
     return [
       IconButton(
         onPressed: () {
-          close(context, null);
+          showResults(context);
         },
-        icon: Icon(Icons.close),
+        icon: Icon(Icons.search),
       ),
     ];
   }
@@ -84,7 +84,7 @@ class DataSearch extends SearchDelegate {
   Widget? buildLeading(BuildContext context) {
     return IconButton(
       onPressed: () {
-        query = "";
+        close(context, null);
       },
       icon: Icon(Icons.arrow_back),
     );
@@ -92,14 +92,18 @@ class DataSearch extends SearchDelegate {
 
   @override
   Widget buildResults(BuildContext context) {
-    return Text(query);
+    return Center(
+        child: Text(
+      query,
+      style: TextStyle(fontSize: 40.0),
+    ));
   }
 
   @override
   Widget buildSuggestions(BuildContext context) {
     List fltr = names.where((e) {
-      return e.startsWith(query);
-      // return e.contains(query);
+      // return e.startsWith(query);
+      return e.contains(query);
       // return true;
     }).toList();
     return ListView(
