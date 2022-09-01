@@ -78,22 +78,23 @@ class _SignupState extends State<Signup> {
                   SizedBox(height: 20),
                   Container(
                     child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text("If You Have Account "),
-                          InkWell(
-                            onTap: () {
-                              Navigator.pushReplacementNamed(context, "login");
-                            },
-                            child: Text(
-                              "Log In",
-                              style: TextStyle(
-                                  color: Colors.blue,
-                                  fontWeight: FontWeight.bold),
-                            ),
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text("If You Have Account "),
+                        InkWell(
+                          onTap: () {
+                            Navigator.pushReplacementNamed(context, "login");
+                          },
+                          child: Text(
+                            "Log In",
+                            style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold),
                           ),
-                        ]),
-                  )
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),

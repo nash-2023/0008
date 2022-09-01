@@ -17,7 +17,12 @@ class _HomePageState extends State<HomePage> {
     {
       'title': "home work",
       'note': "lorem epsum0",
-      'image': 'ark.jpg',
+      'image': 'set.jpg',
+    },
+    {
+      'title': "home work",
+      'note': "lorem epsum0",
+      'image': 'us.jpg',
     },
     {
       'title': "home work",
@@ -27,12 +32,12 @@ class _HomePageState extends State<HomePage> {
     {
       'title': "home work",
       'note': "lorem epsum0",
-      'image': 'ark.jpg',
+      'image': 'set.jpg',
     },
     {
       'title': "home work",
       'note': "lorem epsum0",
-      'image': 'ark.jpg',
+      'image': 'us.jpg',
     },
     {
       'title': "home work",
@@ -59,20 +64,43 @@ class _HomePageState extends State<HomePage> {
         children: List.generate(
           _notes.length,
           (i) {
-            String img = _notes[i]['image'];
-            return ListTile(
-              leading: Image.asset(
-                "./images/$img",
-                width: 35.0,
-                height: 35.0,
-                fit: BoxFit.cover,
-              ),
-              title: Text(_notes[i]["title"]),
-              subtitle: Text(_notes[i]['note']),
-            );
+            return ViewItem(note: _notes[i]);
           },
         ),
       )),
     );
   }
 }
+
+class ViewItem extends StatelessWidget {
+  const ViewItem({Key? key, required this.note}) : super(key: key);
+  final dynamic note;
+  @override
+  Widget build(BuildContext context) {
+    String img = note['image'];
+    return ListTile(
+      leading: Image.asset(
+        "./images/$img",
+        width: 35.0,
+        height: 35.0,
+        fit: BoxFit.fitHeight,
+      ),
+      title: Text(note["title"]),
+      subtitle: Text(note['note']),
+      isThreeLine: true,
+    );
+  }
+}
+
+// // If you wanna make it in the _HomePageState >> build( * );
+// // It will be as following
+// ListTile(
+//               leading: Image.asset(
+//                 "./images/$img",
+//                 width: 35.0,
+//                 height: 35.0,
+//                 fit: BoxFit.cover,
+//               ),
+//               title: Text(_notes[i]["title"]),
+//               subtitle: Text(_notes[i]['note']),
+//             );
