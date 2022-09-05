@@ -11,83 +11,134 @@ class _HomePageState extends State<HomePage> {
   List _notes = [
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 0",
       'image': 'ark.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 1",
       'image': 'set.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 2",
       'image': 'us.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 3",
       'image': 'ark.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 4",
       'image': 'set.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 5",
       'image': 'us.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 6",
       'image': 'ark.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 7",
       'image': 'set.jpg',
     },
     {
       'title': "home work",
-      'note': "lorem epsum0",
+      'note': "lorem epsum 8",
       'image': 'us.jpg',
     },
   ];
 
   @override
   Widget build(BuildContext context) {
+    double _mdqr = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
-          child: ListView(
-        children: List.generate(
-          _notes.length,
-          (i) {
-            return ViewItem(note: _notes[i]);
-          },
+        child: ListView(
+          children: List.generate(
+            _notes.length,
+            (i) {
+              /* return Dismissible(
+                key: Key("$i"),
+                child: ViewItem(mdqr: _mdqr, note: _notes[i]),
+              );*/
+              return Row(
+                children: [
+                  Expanded(
+                    flex: 5,
+                    child: ViewItem(
+                      mdqr: _mdqr,
+                      note: _notes[i],
+                    ),
+                  ),
+                  Expanded(
+                    flex: 1,
+                    child: IconButton(
+                      icon: Icon(Icons.delete_forever),
+                      onPressed: () {
+                        print("delete item # $i");
+                        setState(
+                          () {
+                            _notes.removeAt(i);
+                          },
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              );
+            },
+          ),
         ),
-      )),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Theme.of(context).primaryColor,
+        child: Icon(Icons.add),
+        onPressed: () {
+          print("FAB");
+        },
+      ),
     );
   }
 }
 
 class ViewItem extends StatelessWidget {
-  const ViewItem({Key? key, required this.note}) : super(key: key);
-  final dynamic note;
+  const ViewItem({Key? key, required this.note, this.mdqr}) : super(key: key);
+  final note;
+  final mdqr;
   @override
   Widget build(BuildContext context) {
     String img = note['image'];
-    return ListTile(
-      leading: Image.asset(
-        "./images/$img",
-        width: 35.0,
-        height: 35.0,
-        fit: BoxFit.fitHeight,
+    return Card(
+      child: Row(
+        children: [
+          Expanded(
+            flex: 1,
+            child: Image.asset(
+              "./images/$img",
+              height: 80.0,
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: ListTile(
+              title: Text(note["note"]),
+              trailing: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {},
+              ),
+            ),
+          ),
+        ],
       ),
-      title: Text(note["title"]),
-      subtitle: Text(note['note']),
-      isThreeLine: true,
     );
   }
 }
@@ -104,3 +155,37 @@ class ViewItem extends StatelessWidget {
 //               title: Text(_notes[i]["title"]),
 //               subtitle: Text(_notes[i]['note']),
 //             );
+
+
+/***********
+ * 
+ * 
+ *  Card(
+      child: Row(
+        children: [
+          Container(
+            width: mdqr - 110, // first way  in [Container widget]
+            // the other way by use [Expanded widget]
+            child: ListTile(
+              title: Text(note["note"]),
+              trailing: IconButton(
+                icon: Icon(Icons.edit),
+                onPressed: () {},
+              ),
+            ),
+          ),
+          Container(
+            width: 100.0,
+            child: Image.asset(
+              "./images/$img",
+              width: 35.0,
+              height: 35.0,
+              fit: BoxFit.fitHeight,
+            ),
+          ),
+        ],
+      ),
+    );
+  } 
+
+  */
