@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -103,6 +104,7 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add),
         onPressed: () {
           print("FAB");
+          Navigator.pushNamed(context, 'addnote');
         },
       ),
     );
@@ -130,7 +132,8 @@ class ViewItem extends StatelessWidget {
           Expanded(
             flex: 4,
             child: ListTile(
-              title: Text(note["note"]),
+              title: Text(note["title"]),
+              subtitle: Text(note["note"]),
               trailing: IconButton(
                 icon: Icon(Icons.edit),
                 onPressed: () {},
