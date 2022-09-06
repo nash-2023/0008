@@ -46,6 +46,26 @@ class _AddnoteState extends State<Addnote> {
                   ),
                 ),
               ),
+              ElevatedButton(
+                child: Text("Add Image"),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'homepage');
+                },
+              ),
+              Container(
+                height: 20,
+              ),
+              ElevatedButton(
+                style: ButtonStyle(),
+                child: Text("Submit",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20.0,
+                    )),
+                onPressed: () {
+                  Navigator.pushNamed(context, 'homepage');
+                },
+              ),
             ],
           ),
         ),
