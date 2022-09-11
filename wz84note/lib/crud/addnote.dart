@@ -12,7 +12,7 @@ class _AddnoteState extends State<Addnote> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Add Note"),
+        title: Text("Add a Note"),
         centerTitle: true,
       ),
       body: Container(

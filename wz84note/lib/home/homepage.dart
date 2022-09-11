@@ -9,11 +9,11 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List _notes = [
+  List<Map<String, String>> _notes = [
     {
       'title': "home work",
       'note': "lorem epsum 0",
-      'image': 'ark.jpg',
+      'image': 'dog.jpg',
     },
     {
       'title': "home work",
@@ -123,10 +123,10 @@ class ViewItem extends StatelessWidget {
         children: [
           Expanded(
             flex: 1,
-            child: Image.asset(
-              "./images/$img",
-              height: 80.0,
-              fit: BoxFit.fitHeight,
+            child: CircleAvatar(
+              backgroundImage: AssetImage(
+                "./images/$img",
+              ),
             ),
           ),
           Expanded(
