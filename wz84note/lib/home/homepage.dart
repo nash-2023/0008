@@ -68,7 +68,10 @@ class _HomePageState extends State<HomePage> {
             (i) {
               /* return Dismissible(
                 key: Key("$i"),
-                child: ViewItem(mdqr: _mdqr, note: _notes[i]),
+                child: Row(children: [ 
+                  ...the underneith followin code
+                  ],
+                  ),
               );*/
               return Row(
                 children: [
@@ -84,7 +87,6 @@ class _HomePageState extends State<HomePage> {
                     child: IconButton(
                       icon: Icon(Icons.delete_forever),
                       onPressed: () {
-                        print("delete item # $i");
                         setState(
                           () {
                             _notes.removeAt(i);

@@ -20,6 +20,7 @@ class _AddnoteState extends State<Addnote> {
         child: Form(
           autovalidateMode: AutovalidateMode.always,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextFormField(
                 maxLength: 30,
@@ -56,11 +57,10 @@ class _AddnoteState extends State<Addnote> {
                 height: 20,
               ),
               ElevatedButton(
-                style: ButtonStyle(),
-                child: Text("Submit",
+                child: Text("Save",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 20.0,
+                      fontSize: 22.0,
                     )),
                 onPressed: () {
                   Navigator.pushNamed(context, 'homepage');
