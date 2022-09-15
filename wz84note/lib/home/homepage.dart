@@ -60,54 +60,58 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     double _mdqr = MediaQuery.of(context).size.width;
-    return Scaffold(
-      body: Container(
-        child: ListView(
-          children: List.generate(
-            _notes.length,
-            (i) {
-              /* return Dismissible(
-                key: Key("$i"),
-                child: Row(children: [ 
-                  ...the underneith followin code
+    return Directionality(
+      // [ Directionality ] widget for Arabic-English conversion
+      textDirection: TextDirection.ltr,
+      child: Scaffold(
+        body: Container(
+          child: ListView(
+            children: List.generate(
+              _notes.length,
+              (i) {
+                /* return Dismissible(
+                  key: Key("$i"),
+                  child: Row(children: [ 
+                    ...the underneith followin code
+                    ],
+                    ),
+                );*/
+                return Row(
+                  children: [
+                    Expanded(
+                      flex: 5,
+                      child: ViewItem(
+                        mdqr: _mdqr,
+                        note: _notes[i],
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: IconButton(
+                        icon: Icon(Icons.delete_forever),
+                        onPressed: () {
+                          setState(
+                            () {
+                              _notes.removeAt(i);
+                            },
+                          );
+                        },
+                      ),
+                    ),
                   ],
-                  ),
-              );*/
-              return Row(
-                children: [
-                  Expanded(
-                    flex: 5,
-                    child: ViewItem(
-                      mdqr: _mdqr,
-                      note: _notes[i],
-                    ),
-                  ),
-                  Expanded(
-                    flex: 1,
-                    child: IconButton(
-                      icon: Icon(Icons.delete_forever),
-                      onPressed: () {
-                        setState(
-                          () {
-                            _notes.removeAt(i);
-                          },
-                        );
-                      },
-                    ),
-                  ),
-                ],
-              );
-            },
+                );
+              },
+            ),
           ),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: Theme.of(context).primaryColor,
-        child: Icon(Icons.add),
-        onPressed: () {
-          print("FAB");
-          Navigator.pushNamed(context, 'addnote');
-        },
+        floatingActionButton: FloatingActionButton(
+          backgroundColor: Theme.of(context).primaryColor,
+          child: Icon(Icons.add),
+          onPressed: () {
+            print("FAB");
+            Navigator.pushNamed(context, 'addnote');
+          },
+        ),
       ),
     );
   }

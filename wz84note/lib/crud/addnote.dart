@@ -48,20 +48,31 @@ class _AddnoteState extends State<Addnote> {
                 ),
               ),
               ElevatedButton(
-                child: Text("Add Image"),
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text(
+                    "Add Image",
+                    style: TextStyle(
+                      fontSize: 20.0,
+                    ),
+                  ),
+                ),
                 onPressed: () {
-                  Navigator.pushNamed(context, 'homepage');
+                  showBottomSheet();
                 },
               ),
-              Container(
+              SizedBox(
                 height: 20,
               ),
               ElevatedButton(
-                child: Text("Save",
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 22.0,
-                    )),
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  child: Text("Save",
+                      style: TextStyle(
+                        fontSize: 22.0,
+                        // fontWeight: FontWeight.w100,
+                      )),
+                ),
                 onPressed: () {
                   Navigator.pushNamed(context, 'homepage');
                 },
@@ -71,5 +82,88 @@ class _AddnoteState extends State<Addnote> {
         ),
       ),
     );
+  } // end of build ();
+
+  showBottomSheet() {
+    double _mdqrWdth = MediaQuery.of(context).size.width;
+    return showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            height: _mdqrWdth / 2,
+            padding: EdgeInsets.all(20.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text(
+                  "Please Choose Image",
+                  style: TextStyle(
+                    fontSize: 18.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    print("gallery inkweel");
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 10.0,
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.image,
+                          size: 30.0,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          "From Gallery",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                InkWell(
+                  onTap: () {
+                    print("camera inkweel");
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.0,
+                      vertical: 10.0,
+                    ),
+                    child: Row(
+                      children: [
+                        Icon(
+                          Icons.camera,
+                          size: 30,
+                        ),
+                        SizedBox(
+                          width: 10.0,
+                        ),
+                        Text(
+                          "From Camera",
+                          style: TextStyle(
+                            fontSize: 16.0,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        });
   }
 }
