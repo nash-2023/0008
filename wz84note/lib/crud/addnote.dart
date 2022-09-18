@@ -85,12 +85,12 @@ class _AddnoteState extends State<Addnote> {
   } // end of build ();
 
   showBottomSheet() {
-    double _mdqrWdth = MediaQuery.of(context).size.width;
+    double _mdqrWdth = MediaQuery.of(context).size.height;
     return showModalBottomSheet(
         context: context,
         builder: (context) {
           return Container(
-            height: _mdqrWdth / 2,
+            height: _mdqrWdth / 4,
             padding: EdgeInsets.all(20.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -115,7 +115,7 @@ class _AddnoteState extends State<Addnote> {
                     child: Row(
                       children: [
                         Icon(
-                          Icons.image,
+                          Icons.photo_album_outlined,
                           size: 30.0,
                         ),
                         SizedBox(
@@ -144,7 +144,7 @@ class _AddnoteState extends State<Addnote> {
                     child: Row(
                       children: [
                         Icon(
-                          Icons.camera,
+                          Icons.camera_outlined,
                           size: 30,
                         ),
                         SizedBox(
