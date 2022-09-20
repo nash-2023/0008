@@ -11,8 +11,12 @@ class DrbDnSrch extends StatefulWidget {
 class _DrbDnSrchState extends State<DrbDnSrch> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Text("Drop Search"),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+      ),
+      body: Center(child: Text("dbdn")),
     );
   }
 }

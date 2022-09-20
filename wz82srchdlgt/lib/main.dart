@@ -102,8 +102,8 @@ class DataSearch extends SearchDelegate {
   @override
   Widget buildSuggestions(BuildContext context) {
     List fltr = names.where((e) {
-      // return e.startsWith(query);
-      return e.contains(query);
+      return e.startsWith(query) && query != "";
+      // return e.contains(query);
       // return true;
     }).toList();
     return ListView(
