@@ -12,13 +12,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Training 90s',
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
       // home: AweDial(title: 'Awesome Dialoge'),
-      // home: DrbDnSrch(title: 'Drop Down Search'),
-      home: LnchIcns(title: 'Drop Down Search'),
+      home: DrbDnSrch(title: 'Drop Down Search'),
+      // home: LnchIcns(title: 'Drop Down Search'),
     );
   }
 }

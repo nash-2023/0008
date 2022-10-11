@@ -20,7 +20,7 @@ flutter_icons:
     image_path: "assets/imgs/us.jpg"
     icon_size: 48 # min:48, max:256, default: 48
 
-
+#1- 
 # then run this cmds:
 # flutter pub get
 # flutter pub run flutter_launcher_icons:main
